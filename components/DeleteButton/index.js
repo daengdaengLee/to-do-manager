@@ -1,14 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Button from '../Button';
 import DeleteButtonContent from '../DeleteButtonContent';
 
-function DeleteButton() {
+function DeleteButton({ ownEvent }) {
   return (
-    <Button ownEvent={{ onPress: () => console.log('test hi') }}>
+    <Button ownEvent={ownEvent}>
       <DeleteButtonContent />
     </Button>
   );
 }
+
+DeleteButton.propTypes = {
+  ownEvent: PropTypes.objectOf(PropTypes.func).isRequired,
+};
 
 export default DeleteButton;
