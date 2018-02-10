@@ -4,16 +4,17 @@ import PropTypes from 'prop-types';
 import Button from '../Button';
 import ButtonContent from '../ButtonContent';
 
-function DeleteButton({ ownEvent }) {
+function ActionButton({ ownEvent, content }) {
   return (
     <Button ownEvent={ownEvent}>
-      <ButtonContent content="❌" />
+      <ButtonContent content={content} />
     </Button>
   );
 }
 
-DeleteButton.propTypes = {
+ActionButton.propTypes = {
   ownEvent: PropTypes.objectOf(PropTypes.func).isRequired,
+  content: PropTypes.string.isRequired,
 };
 
-export default DeleteButton;
+export default ActionButton;

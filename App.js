@@ -1,8 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import EditButton from './components/EditButton';
-import DeleteButton from './components/DeleteButton';
+import ActionButton from './components/ActionButton';
 
 export default class App extends React.Component {
   render() {
@@ -10,8 +9,8 @@ export default class App extends React.Component {
       <View style={styles.container}>
         <Text>Open up App.js to start working on your app!</Text>
         <View style={styles.test}>
-          <EditButton ownEvent={{ onPress: () => console.log('test sleeppppyyppy edit') }} />
-          <DeleteButton ownEvent={{ onPress: () => console.log('test sleeppppyyppy delete') }} />
+          <ActionButton content="✏️" ownEvent={{ onPress: () => console.log('test sleeppppyyppy edit') }} />
+          <ActionButton content="❌" ownEvent={{ onPress: () => console.log('test sleeppppyyppy delete') }} />
         </View>
       </View>
     );
