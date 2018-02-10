@@ -1,12 +1,22 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
 function CompleteButtonContent() {
   return (
-    <Text>
-      This is a CompleteButtonContent Component.
-    </Text>
+    <View
+      style={styles.circle}
+    />
   );
 }
+
+const styles = StyleSheet.create({
+  circle: {
+    width: 30,
+    height: 30,
+    borderRadius: 15,
+    borderWidth: 3,
+    marginRight: 20,
+  },
+});
 
 export default CompleteButtonContent;
