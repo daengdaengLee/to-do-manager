@@ -1,11 +1,12 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
 
-function DeleteButtonContent() {
+function ButtonContent({ content }) {
   return (
     <View style={styles.buttonContainer}>
       <Text>
-        ❌
+        {content}
       </Text>
     </View>
   );
@@ -20,4 +21,8 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DeleteButtonContent;
+ButtonContent.propTypes = {
+  content: PropTypes.string.isRequired,
+};
+
+export default ButtonContent;

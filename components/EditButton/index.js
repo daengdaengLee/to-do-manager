@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Button from '../Button';
-import EditButtonContent from '../EditButtonContent';
+import ButtonContent from '../ButtonContent';
 
 function EditButton({ ownEvent }) {
   return (
     <Button ownEvent={ownEvent}>
-      <EditButtonContent />
+      <ButtonContent content="✏️" />
     </Button>
   );
 }

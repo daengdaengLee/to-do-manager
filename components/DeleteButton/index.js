@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Button from '../Button';
-import DeleteButtonContent from '../DeleteButtonContent';
+import ButtonContent from '../ButtonContent';
 
 function DeleteButton({ ownEvent }) {
   return (
     <Button ownEvent={ownEvent}>
-      <DeleteButtonContent />
+      <ButtonContent content="❌" />
     </Button>
   );
 }
