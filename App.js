@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import EditButtonContent from './components/EditButtonContent';
+import EditButton from './components/EditButton';
 
 export default class App extends React.Component {
   render() {
@@ -9,7 +9,7 @@ export default class App extends React.Component {
       <View style={styles.container}>
         <Text>Open up App.js to start working on your app!</Text>
         <View style={styles.test}>
-          <EditButtonContent />
+          <EditButton ownEvent={{ onPress: () => console.log('test sleeppppyyppy') }} />
         </View>
       </View>
     );
