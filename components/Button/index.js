@@ -2,16 +2,16 @@ import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 
-function Button({ content, ownEvent }) {
+function Button({ children, ownEvent }) {
   return (
     <TouchableOpacity {...ownEvent}>
-      {content}
+      {children}
     </TouchableOpacity>
   );
 }
 
 Button.propTypes = {
-  content: PropTypes.object.isRequired,
+  children: PropTypes.object.isRequired,
   ownEvent: PropTypes.objectOf(PropTypes.func).isRequired,
 };
 
