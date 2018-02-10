@@ -1,14 +1,17 @@
 import React from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
+import PropTypes from 'prop-types';
 
-function Button() {
+function Button({ content }) {
   return (
     <TouchableOpacity>
-      <Text>
-        This is a Button Component.
-      </Text>
+      {content}
     </TouchableOpacity>
   );
 }
+
+Button.propTypes = {
+  content: PropTypes.object.isRequired,
+};
 
 export default Button;
