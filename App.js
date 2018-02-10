@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import DeleteButton from './components/DeleteButton';
+import ActionButton from './components/ActionButton';
 
 export default class App extends React.Component {
   render() {
@@ -9,7 +9,8 @@ export default class App extends React.Component {
       <View style={styles.container}>
         <Text>Open up App.js to start working on your app!</Text>
         <View style={styles.test}>
-          <DeleteButton ownEvent={{ onPress: () => console.log('test hi') }} />
+          <ActionButton content="✏️" ownEvent={{ onPress: () => console.log('test sleeppppyyppy edit') }} />
+          <ActionButton content="❌" ownEvent={{ onPress: () => console.log('test sleeppppyyppy delete') }} />
         </View>
       </View>
     );
@@ -22,7 +23,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   test: {
-    flex: 1,
     flexDirection: 'row',
   },
 });
