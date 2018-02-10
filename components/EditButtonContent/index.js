@@ -1,10 +1,23 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 function EditButtonContent() {
   return (
-    <Text>EditbuttonContent</Text>
+    <View style={styles.buttonContainer}>
+      <Text>
+        ✏️
+      </Text>
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  buttonContainer: {
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
 
 export default EditButtonContent;
