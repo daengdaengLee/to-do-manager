@@ -1,14 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import CompleteButtonContent from './components/CompleteButtonContent';
+import CompleteButton from './components/CompleteButton';
 
 export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
         <Text>Open up App.js to start working on your app!</Text>
-        <CompleteButtonContent isCompleted={false} />
+        <CompleteButton />
       </View>
     );
   }
