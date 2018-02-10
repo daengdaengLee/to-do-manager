@@ -1,18 +1,17 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import Button from './components/Button';
+import CompleteButton from './components/CompleteButton';
 
 export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
         <Text>Open up App.js to start working on your app!</Text>
-        <Button
-          ownEvent={{ onPress: () => console.log('Button Component ownEvent test') }}
-        >
-          <Text>This is a content prop of a Button Component</Text>
-        </Button>
+        <CompleteButton
+          isCompleted={false}
+          ownEvent={{ onPress: () => console.log('test')}}
+        />
       </View>
     );
   }
