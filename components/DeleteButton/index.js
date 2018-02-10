@@ -1,9 +1,13 @@
 import React from 'react';
-import { Text } from 'react-native';
+
+import Button from '../Button';
+import DeleteButtonContent from '../DeleteButtonContent';
 
 function DeleteButton() {
   return (
-    <Text>DeleteButton Component</Text>
+    <Button ownEvent={{ onPress: () => console.log('test hi') }}>
+      <DeleteButtonContent />
+    </Button>
   );
 }
 

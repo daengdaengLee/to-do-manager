@@ -8,7 +8,9 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <Text>Open up App.js to start working on your app!</Text>
-        <DeleteButton />
+        <View style={styles.test}>
+          <DeleteButton />
+        </View>
       </View>
     );
   }
@@ -18,5 +20,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+  },
+  test: {
+    flex: 1,
+    flexDirection: 'row',
   },
 });
