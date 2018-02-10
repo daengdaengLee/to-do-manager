@@ -5,9 +5,9 @@ import PropTypes from 'prop-types';
 import Button from '../Button';
 import CompleteButtonContent from '../CompleteButtonContent';
 
-function CompleteButton({ isCompleted }) {
+function CompleteButton({ isCompleted, ownEvent }) {
   return (
-    <Button ownEvent={{ onPress: () => console.log('test')}} >
+    <Button ownEvent={ownEvent} >
       <CompleteButtonContent isCompleted={isCompleted} />
     </Button>
   );
@@ -15,6 +15,7 @@ function CompleteButton({ isCompleted }) {
 
 CompleteButton.propTypes = {
   isCompleted: PropTypes.bool.isRequired,
+  ownEvnet: PropTypes.objectOf(PropTypes.func).isRequired,
 };
 
 export default CompleteButton;
