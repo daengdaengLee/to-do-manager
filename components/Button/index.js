@@ -2,9 +2,9 @@ import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 
-function Button({ content }) {
+function Button({ content, ownEvent }) {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity {...ownEvent}>
       {content}
     </TouchableOpacity>
   );
@@ -12,6 +12,7 @@ function Button({ content }) {
 
 Button.propTypes = {
   content: PropTypes.object.isRequired,
+  ownEvent: PropTypes.objectOf(PropTypes.func).isRequired,
 };
 
 export default Button;
