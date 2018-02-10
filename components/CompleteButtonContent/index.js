@@ -1,10 +1,11 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
 
-function CompleteButtonContent() {
+function CompleteButtonContent({ isCompleted }) {
   return (
     <View
-      style={styles.circle}
+      style={[styles.circle, isCompleted ? styles.completedCircle : styles.uncompletedCircle]}
     />
   );
 }
@@ -17,6 +18,16 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     marginRight: 20,
   },
+  completedCircle: {
+    borderColor: '#BBBBBB',
+  },
+  uncompletedCircle: {
+    borderColor: '#F23657',
+  },
 });
+
+CompleteButtonContent.propTypes = {
+  isCompleted: PropTypes.bool.isRequired,
+};
 
 export default CompleteButtonContent;
