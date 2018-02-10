@@ -1,17 +1,16 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import CompleteButton from './components/CompleteButton';
+import DeleteButton from './components/DeleteButton';
 
 export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
         <Text>Open up App.js to start working on your app!</Text>
-        <CompleteButton
-          isCompleted={false}
-          ownEvent={{ onPress: () => console.log('test')}}
-        />
+        <View style={styles.test}>
+          <DeleteButton ownEvent={{ onPress: () => console.log('test hi') }} />
+        </View>
       </View>
     );
   }
@@ -21,7 +20,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  },
+  test: {
+    flex: 1,
+    flexDirection: 'row',
   },
 });
