@@ -1,11 +1,13 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, TouchableOpacity } from 'react-native';
 
 function Button() {
   return (
-    <Text>
-      This is a Button Component.
-    </Text>
+    <TouchableOpacity>
+      <Text>
+        This is a Button Component.
+      </Text>
+    </TouchableOpacity>
   );
 }
 
