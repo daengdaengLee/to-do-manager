@@ -1,42 +1,53 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-// import makeActionButtons from './hoc/makeActionButtons';
-import ActionButton from './components/ActionButton';
-import CompleteButton from './components/CompleteButton';
-
-// const ActionButtons = makeActionButtons(
-//   () => <ActionButton content="✅" ownEvent={{ onPress: () => console.log('test sleeppppyyppy finishEditing') }} />,
-//   () => <ActionButton content="✏️" ownEvent={{ onPress: () => console.log('test sleeppppyyppy edit') }} />,
-//   () => <ActionButton content="❌" ownEvent={{ onPress: () => console.log('test sleeppppyyppy delete') }} />,
-// );
+import CompleteButton from './components/molecules/CompleteButton';
+import ActionButtons from './components/molecules/ActionButtons';
 
 export default class App extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { isEditing: false };
+    this._finishEditing = this._finishEditing.bind(this);
+    this._startEditing = this._startEditing.bind(this);
+  }
+
+  _finishEditing() {
+    this.setState({ isEditing: false });
+  }
+
+  _startEditing() {
+    this.setState({ isEditing: true });
+  }
+
+  _deleteItem() {
+    console.log('delete item!');
+  }
+
   render() {
+    const { isEditing } = this.state;
+    const { _finishEditing, _startEditing, _deleteItem } = this;
     return (
       <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        {/* <View style={styles.test}>
-          <ActionButtons
-            isEditing={false}
-            finishEditing={() => console.log('finishEditing')}
-            startEditing={() => console.log('startEditing')}
-            deleteItem={() => console.log('deleteItem')}
-          />
-        </View> */}
-        <CompleteButton contentProps={{ isCompleted: false }} />
-        <ActionButton contentProps={{ content: '❌' }} />
+        <CompleteButton isCompleted={false} eventFunc={() => console.log('CompleteButton false')} />
+        <CompleteButton isCompleted={true} eventFunc={() => console.log('CompleteButton true')} />
+        <ActionButtons
+          isEditing={isEditing}
+          trueProps={{ finishEditing: _finishEditing }}
+          falseProps={{ startEditing: _startEditing, deleteItem: _deleteItem }}
+        />
       </View>
     );
   }
+
 }
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: 40,
     flex: 1,
-    backgroundColor: '#fff',
-  },
-  test: {
     flexDirection: 'row',
+    backgroundColor: '#fff',
   },
 });

@@ -2,7 +2,7 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 
-function CompleteButtonContent({ isCompleted }) {
+function CompleteCircle({ isCompleted }) {
   return (
     <View
       style={[styles.circle, isCompleted ? styles.completedCircle : styles.uncompletedCircle]}
@@ -26,8 +26,8 @@ const styles = StyleSheet.create({
   },
 });
 
-CompleteButtonContent.propTypes = {
+CompleteCircle.propTypes = {
   isCompleted: PropTypes.bool.isRequired,
 };
 
-export default CompleteButtonContent;
+export default CompleteCircle;
