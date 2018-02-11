@@ -11,6 +11,7 @@ export default class App extends React.Component {
         <View style={styles.test}>
           <ActionButton content="✏️" ownEvent={{ onPress: () => console.log('test sleeppppyyppy edit') }} />
           <ActionButton content="❌" ownEvent={{ onPress: () => console.log('test sleeppppyyppy delete') }} />
+          <ActionButton content="✅" ownEvent={{ onPress: () => console.log('test sleeppppyyppy finishEditing') }} />
         </View>
       </View>
     );
