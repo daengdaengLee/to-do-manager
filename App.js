@@ -1,8 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import CompleteButton from './components/molecules/CompleteButton';
-import ActionButtons from './components/molecules/ActionButtons';
+import MyTextInput from './components/atoms/MyTextInput';
 
 export default class App extends React.Component {
 
@@ -30,12 +29,19 @@ export default class App extends React.Component {
     const { _finishEditing, _startEditing, _deleteItem } = this;
     return (
       <View style={styles.container}>
-        <CompleteButton isCompleted={false} eventFunc={() => console.log('CompleteButton false')} />
-        <CompleteButton isCompleted={true} eventFunc={() => console.log('CompleteButton true')} />
-        <ActionButtons
-          isEditing={isEditing}
-          trueProps={{ finishEditing: _finishEditing }}
-          falseProps={{ startEditing: _startEditing, deleteItem: _deleteItem }}
+        <MyTextInput
+          styleNames={['mainInput']}
+          // placeholder={'New To DO'}
+          // placeholderTextColor={'#999999'}
+          value={'testadfafdsdaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'}
+        />
+        <MyTextInput
+          styleNames={['itemInput', 'uncompletedText']}
+          value={'New To DO'}
+        />
+        <MyTextInput
+          styleNames={['itemInput', 'completedText']}
+          value={'New To DO'}
         />
       </View>
     );
@@ -47,7 +53,6 @@ const styles = StyleSheet.create({
   container: {
     marginTop: 40,
     flex: 1,
-    flexDirection: 'row',
     backgroundColor: '#fff',
   },
 });
