@@ -1,20 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// import Components
 import Button from '../Button';
 import ActionButtonContent from '../ActionButtonContent';
 
-function ActionButton({ ownEvent, content }) {
-  return (
-    <Button ownEvent={ownEvent}>
-      <ActionButtonContent content={content} />
-    </Button>
-  );
-}
+// import HOCs
+import withButtonContent from '../../hoc/withButtonContent';
+
+const ActionButton = withButtonContent(Button, ActionButtonContent);
 
 ActionButton.propTypes = {
-  ownEvent: PropTypes.objectOf(PropTypes.func).isRequired,
-  content: PropTypes.string.isRequired,
+  ...ActionButton.propTypes,
+  contentProps: PropTypes.shape({ content: PropTypes.string.isRequired }).isRequired,
 };
 
 export default ActionButton;
