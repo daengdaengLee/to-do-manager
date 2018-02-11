@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // import Components
 import ActionButton from '../ActionButton';
@@ -11,5 +12,9 @@ function IsEditingButtonGroup({ finishEditing }) {
     </Row>
   );
 }
+
+IsEditingButtonGroup.propTypes = {
+  finishEditing: PropTypes.func.isRequired,
+};
 
 export default IsEditingButtonGroup;
