@@ -1,20 +1,18 @@
 import React from 'react';
-import { Text } from 'react-native';
 import PropTypes from 'prop-types';
 
+// import Components
 import Button from '../Button';
 import CompleteButtonContent from '../CompleteButtonContent';
 
-function CompleteButton({ isCompleted }) {
-  return (
-    <Button>
-      <CompleteButtonContent isCompleted={isCompleted} />
-    </Button>
-  );
-}
+// import HOCs
+import withButtonContent from '../../hoc/withButtonContent';
+
+const CompleteButton = withButtonContent(Button, CompleteButtonContent);
 
 CompleteButton.propTypes = {
-  isCompleted: PropTypes.bool.isRequired,
+  ...CompleteButton.propTypes,
+  contentProps: PropTypes.shape({ isCompleted: PropTypes.bool.isRequired }).isRequired,
 };
 
 export default CompleteButton;
