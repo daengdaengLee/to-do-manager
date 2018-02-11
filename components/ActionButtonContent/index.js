@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 
-function ButtonContent({ content }) {
+function ActionButtonContent({ content }) {
   return (
     <View style={styles.buttonContainer}>
       <Text>
@@ -21,8 +21,8 @@ const styles = StyleSheet.create({
   },
 });
 
-ButtonContent.propTypes = {
+ActionButtonContent.propTypes = {
   content: PropTypes.string.isRequired,
 };
 
-export default ButtonContent;
+export default ActionButtonContent;

@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Button from '../Button';
-import ButtonContent from '../ButtonContent';
+import ActionButtonContent from '../ActionButtonContent';
 
 function ActionButton({ ownEvent, content }) {
   return (
     <Button ownEvent={ownEvent}>
-      <ButtonContent content={content} />
+      <ActionButtonContent content={content} />
     </Button>
   );
 }
