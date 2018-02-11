@@ -1,5 +1,9 @@
 import React from 'react';
 import { TextInput, StyleSheet, Dimensions } from 'react-native';
+import PropTypes from 'prop-types';
+
+// import HOCs
+import withNoStyleNames from '../../../hoc/withNoStyleNames';
 
 // import utils
 import filterStyles from '../../../utils/filterStyles';
@@ -7,7 +11,6 @@ import filterStyles from '../../../utils/filterStyles';
 const { width } = Dimensions.get('window');
 
 function MyTextInput({ styleNames, ...remainProps }) {
-  console.log(styles);
   return <TextInput
     style={filterStyles(styleNames, styles)}
     underlineColorAndroid={'transparent'}
@@ -40,4 +43,8 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MyTextInput;
+MyTextInput.propTypes = {
+  styleNames: PropTypes.arrayOf(PropTypes.string),
+};
+
+export default withNoStyleNames(MyTextInput);

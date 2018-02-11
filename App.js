@@ -43,6 +43,9 @@ export default class App extends React.Component {
           styleNames={['itemInput', 'completedText']}
           value={'New To DO'}
         />
+        <MyTextInput
+          value={'No styleNames'}
+        />
       </View>
     );
   }
