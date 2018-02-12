@@ -3,15 +3,18 @@ import { View, StyleSheet, Dimensions } from 'react-native';
 import PropTypes from 'prop-types';
 
 // import HOCs
-import withNoStyleNames from '../../../hoc/withNoStyleNames';
-import withInvalidStyleNames from '../../../hoc/withInvalidStyleNames';
+import withValidProps from '../../../hoc/withValidProps';
 
 // import utils
 import filterStyles from '../../../utils/filterStyles';
+import validateStyleNames from '../../../utils/validateStyleNames';
+
+// define validator function
+const validatorForStyleNames = validateStyleNames(['circle', 'completedCircle', 'uncompletedCircle', 'iconContainer', 'row', 'toDoItemRow', 'toDoItemFirstColumn']);
 
 const { width } = Dimensions.get('window');
 
-function MyView({ children, styleNames }) {
+function MyViewTemp({ children, styleNames }) {
   return (
     <View style={filterStyles(styleNames, styles)}>
       {children}
@@ -56,9 +59,11 @@ const styles = StyleSheet.create({
   },
 });
 
+const MyView = withValidProps(validatorForStyleNames)(MyViewTemp);
+
 MyView.propTypes = {
   children: PropTypes.oneOfType([PropTypes.node, PropTypes.element]),
   styleNames: PropTypes.arrayOf(PropTypes.string),
 };
 
-export default withNoStyleNames(withInvalidStyleNames(['circle', 'completedCircle', 'uncompletedCircle', 'iconContainer', 'row', 'toDoItemRow', 'toDoItemFirstColumn'])(MyView));
+export default MyView;

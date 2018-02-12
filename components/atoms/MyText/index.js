@@ -3,13 +3,16 @@ import { Text, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 
 // import HOCs
-import withNoStyleNames from '../../../hoc/withNoStyleNames';
-import withInvalidStyleNames from '../../../hoc/withInvalidStyleNames';
+import withValidProps from '../../../hoc/withValidProps';
 
 // import utils
 import filterStyles from '../../../utils/filterStyles';
+import validateStyleNames from '../../../utils/validateStyleNames';
 
-function MyText({ styleNames, children }) {
+// define validator function
+const validatorForStyleNames = validateStyleNames(['toDoItemText', 'completedText', 'uncompletedText']);
+
+function MyTextTemp({ styleNames, children }) {
   return (
     <Text style={filterStyles(styleNames, styles)}>
       {children}
@@ -32,9 +35,11 @@ const styles = StyleSheet.create({
   },
 });
 
+const MyText = withValidProps(validatorForStyleNames)(MyTextTemp);
+
 MyText.propTypes = {
   styleNames: PropTypes.arrayOf(PropTypes.string),
   children: PropTypes.string.isRequired,
 };
 
-export default withNoStyleNames(withInvalidStyleNames(['toDoItemText', 'completedText', 'uncompletedText'])(MyText));
+export default MyText;

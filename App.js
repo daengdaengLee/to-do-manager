@@ -22,7 +22,7 @@ export default class App extends React.Component {
   }
 
   _deleteItem() {
-    console.log('delete item!');
+    console.log('delete item');
   }
 
   _toggleComplete() {

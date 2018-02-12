@@ -3,15 +3,18 @@ import { TextInput, StyleSheet, Dimensions } from 'react-native';
 import PropTypes from 'prop-types';
 
 // import HOCs
-import withNoStyleNames from '../../../hoc/withNoStyleNames';
-import withInvalidStyleNames from '../../../hoc/withInvalidStyleNames';
+import withValidProps from '../../../hoc/withValidProps';
 
 // import utils
 import filterStyles from '../../../utils/filterStyles';
+import validateStyleNames from '../../../utils/validateStyleNames';
+
+// define validator function
+const validatorForStyleNames = validateStyleNames(['mainInput', 'itemInput', 'completedText', 'uncompletedText']);
 
 const { width } = Dimensions.get('window');
 
-function MyTextInput({ styleNames, ...remainProps }) {
+function MyTextInputTemp({ styleNames, ...remainProps }) {
   return <TextInput
     style={filterStyles(styleNames, styles)}
     underlineColorAndroid={'transparent'}
@@ -44,8 +47,10 @@ const styles = StyleSheet.create({
   },
 });
 
+const MyTextInput = withValidProps(validatorForStyleNames)(MyTextInputTemp);
+
 MyTextInput.propTypes = {
   styleNames: PropTypes.arrayOf(PropTypes.string),
 };
 
-export default withNoStyleNames(withInvalidStyleNames(['mainInput', 'itemInput', 'completedText', 'uncompletedText'])(MyTextInput));
+export default MyTextInput;
