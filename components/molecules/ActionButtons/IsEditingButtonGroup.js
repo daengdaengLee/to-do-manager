@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 
 // import Components
 import ActionButton from '../ActionButton';
-import Row from '../../atoms/Row';
+import MyView from '../../atoms/MyView';
 
 function IsEditingButtonGroup({ finishEditing }) {
   return (
-    <Row>
+    <MyView styleNames={['row']}>
       <ActionButton icon="✅" eventFunc={finishEditing} />
-    </Row>
+    </MyView>
   );
 }
 

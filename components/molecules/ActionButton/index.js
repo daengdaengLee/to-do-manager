@@ -3,17 +3,17 @@ import PropTypes from 'prop-types';
 
 // import Components
 import Button from '../../atoms/Button';
-import IconContainer from '../../atoms/IconContainer';
+import MyView from '../../atoms/MyView';
 import MyText from '../../atoms/MyText';
 
 function ActionButton({ icon, eventFunc }) {
   return (
     <Button ownEvent={{ onPressOut: eventFunc }}>
-      <IconContainer>
+      <MyView styleNames={['iconContainer']}>
         <MyText>
           {icon}
         </MyText>
-      </IconContainer>
+      </MyView>
     </Button>
   );
 }

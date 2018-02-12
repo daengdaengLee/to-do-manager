@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 // import HOCs
 import withNoStyleNames from '../../../hoc/withNoStyleNames';
+import withInvalidStyleNames from '../../../hoc/withInvalidStyleNames';
 
 // import utils
 import filterStyles from '../../../utils/filterStyles';
@@ -47,4 +48,4 @@ MyTextInput.propTypes = {
   styleNames: PropTypes.arrayOf(PropTypes.string),
 };
 
-export default withNoStyleNames(MyTextInput);
+export default withNoStyleNames(withInvalidStyleNames(['mainInput', 'itemInput', 'completedText', 'uncompletedText'])(MyTextInput));

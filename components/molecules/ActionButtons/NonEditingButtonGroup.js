@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 
 // import Components;
 import ActionButton from '../ActionButton';
-import Row from '../../atoms/Row';
+import MyView from '../../atoms/MyView';
 
 function NonEditingButtonGroup({ startEditing, deleteItem }) {
   return (
-    <Row>
+    <MyView styleNames={['row']}>
       <ActionButton icon="✏️" eventFunc={startEditing} />
       <ActionButton icon="❌" eventFunc={deleteItem} />
-    </Row>
+    </MyView>
   );
 }
 
