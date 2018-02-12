@@ -19,7 +19,7 @@ function ActionButton({ icon, eventFunc }) {
 }
 
 ActionButton.propTypes = {
-  eventFunc: PropTypes.func.isResquired,
+  eventFunc: PropTypes.func.isRequired,
   icon: PropTypes.string.isRequired,
 };
 
