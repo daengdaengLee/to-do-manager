@@ -1,13 +1,13 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import ActionButton from './components/molecules/ActionButton';
+import ToDoItem from './components/organisms/ToDoItem';
 
 export default class App extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { isEditing: false, isCompleted: false, toDoItem: 'to do item' };
+    this.state = { isEditing: false, isCompleted: false, toDoItem: 'to do item', id: '123456789' };
     this._finishEditing = this._finishEditing.bind(this);
     this._startEditing = this._startEditing.bind(this);
     this._toggleComplete = this._toggleComplete.bind(this);
@@ -38,13 +38,20 @@ export default class App extends React.Component {
   }
 
   render() {
-    const { isEditing, isCompleted, toDoItem } = this.state;
+    const { isEditing, isCompleted, toDoItem, id } = this.state;
     const { _finishEditing, _startEditing, _deleteItem, _toggleComplete, _controlInput } = this;
     return (
       <View style={styles.container}>
-        <ActionButton
-          icon="❌"
-          eventFunc={() => alert('event func')}
+        <ToDoItem
+          id={id}
+          isCompleted={isCompleted}
+          toggleComplete={_toggleComplete}
+          isEditing={isEditing}
+          toDoItem={toDoItem}
+          controlInput={_controlInput}
+          finishEditing={_finishEditing}
+          startEditing={_startEditing}
+          deleteItem={_deleteItem}
         />
       </View>
     );

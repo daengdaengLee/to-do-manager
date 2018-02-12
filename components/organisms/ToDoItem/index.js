@@ -8,6 +8,7 @@ import ToDoTextField from '../../molecules/ToDoTextField';
 import ActionButtons from '../../molecules/ActionButtons';
 
 function ToDoItem({
+  id,
   isCompleted,
   toggleComplete,
   isEditing,
@@ -45,6 +46,7 @@ function ToDoItem({
 }
 
 ToDoItem.propTypes = {
+  id: PropTypes.string.isRequired,
   isCompleted: PropTypes.bool.isRequired,
   toggleComplete: PropTypes.func.isRequired,
   isEditing: PropTypes.bool.isRequired,
