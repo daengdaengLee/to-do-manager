@@ -8,8 +8,8 @@ import MyView from '../../atoms/MyView';
 function NonEditingButtonGroup({ startEditing, deleteItem }) {
   return (
     <MyView styleNames={['row']}>
-      <ActionButton icon="✏️" eventFunc={startEditing} />
-      <ActionButton icon="❌" eventFunc={deleteItem} />
+      <ActionButton eventFunc={startEditing} icon="✏️" />
+      <ActionButton eventFunc={deleteItem} icon="❌" />
     </MyView>
   );
 }

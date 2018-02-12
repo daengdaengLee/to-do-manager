@@ -37,8 +37,8 @@ function ToDoItem({
       </MyView>
       <ActionButtons
         isEditing={isEditing}
-        trueProps={{ finishEditing: finishEditing }}
-        falseProps={{ startEditing: startEditing, deleteItem: deleteItem }}
+        trueProps={{ finishEditing }}
+        falseProps={{ startEditing, deleteItem }}
       />
     </MyView>
   );

@@ -11,6 +11,8 @@ export default class App extends React.Component {
     this._finishEditing = this._finishEditing.bind(this);
     this._startEditing = this._startEditing.bind(this);
     this._toggleComplete = this._toggleComplete.bind(this);
+    this._controlInput = this._controlInput.bind(this);
+    this._deleteItem = this._deleteItem.bind(this);
   }
 
   _finishEditing() {
@@ -22,15 +24,17 @@ export default class App extends React.Component {
   }
 
   _deleteItem() {
-    console.log('delete item');
+    this.setState({ toDoItem: 'deleted!' })
   }
 
   _toggleComplete() {
     this.setState((prevState) => ({ isCompleted: !prevState.isCompleted }));
   }
 
-  _controlInput() {
-    console.log('control input');
+  _controlInput(text) {
+    this.setState({
+      toDoItem: text,
+    })
   }
 
   render() {
