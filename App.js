@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import ToDoItem from './components/organisms/ToDoItem';
+import ActionButton from './components/molecules/ActionButton';
 
 export default class App extends React.Component {
 
@@ -42,15 +42,9 @@ export default class App extends React.Component {
     const { _finishEditing, _startEditing, _deleteItem, _toggleComplete, _controlInput } = this;
     return (
       <View style={styles.container}>
-        <ToDoItem
-          isCompleted={isCompleted}
-          toggleComplete={_toggleComplete}
-          isEditing={isEditing}
-          toDoItem={toDoItem}
-          controlInput={_controlInput}
-          finishEditing={_finishEditing}
-          startEditing={_startEditing}
-          deleteItem={_deleteItem}
+        <ActionButton
+          icon="❌"
+          eventFunc={() => alert('event func')}
         />
       </View>
     );

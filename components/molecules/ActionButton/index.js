@@ -19,8 +19,8 @@ function ActionButton({ icon, eventFunc }) {
 }
 
 ActionButton.propTypes = {
-  icon: PropTypes.string.isRequired,
   eventFunc: PropTypes.func.isResquired,
+  icon: PropTypes.string.isRequired,
 };
 
 export default ActionButton;
