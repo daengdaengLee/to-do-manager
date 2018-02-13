@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Dimensions } from 'react-native';
+import { View, StyleSheet, Dimensions, Platform } from 'react-native';
 import PropTypes from 'prop-types';
 
 // import HOCs
@@ -10,7 +10,7 @@ import filterStyles from '../../../utils/filterStyles';
 import validateStyleNames from '../../../utils/validateStyleNames';
 
 // define validator function
-const validatorForStyleNames = validateStyleNames(['circle', 'completedCircle', 'uncompletedCircle', 'iconContainer', 'row', 'toDoItemRow', 'toDoItemFirstColumn']);
+const validatorForStyleNames = validateStyleNames(['circle', 'completedCircle', 'uncompletedCircle', 'iconContainer', 'row', 'toDoItemRow', 'toDoItemFirstColumn', 'toDosCard']);
 
 const { width } = Dimensions.get('window');
 
@@ -56,6 +56,27 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     width: width / 2,
+  },
+  toDosCard: {
+    backgroundColor: '#FFFFFF', // white
+    flex: 1,
+    width: width - 25,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    ...Platform.select({
+      ios: {
+        shadowColor: '#323232',
+        shadowOpacity: 0.5,
+        shadowRadius: 5,
+        shadowOffset: {
+          height: -1,
+          width: 0,
+        },
+      },
+      android: {
+        elevation: 3,
+      },
+    }),
   },
 });
 
