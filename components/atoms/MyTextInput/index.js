@@ -14,12 +14,29 @@ const validatorForStyleNames = validateStyleNames(['mainInput', 'itemInput', 'co
 
 const { width } = Dimensions.get('window');
 
-function MyTextInputTemp({ styleNames, ...remainProps }) {
+function MyTextInputTemp({
+  styleNames,
+  multiline,
+  value,
+  onChangeText,
+  onBlur,
+  placeholder,
+  placeholderTextColor,
+  autoCorrect,
+  onSubmitEditing,
+}) {
   return <TextInput
     style={filterStyles(styleNames, styles)}
     underlineColorAndroid={'transparent'}
     returnKeyType={'done'}
-    {...remainProps}
+    multiline={multiline}
+    value={value}
+    onChangeText={onChangeText}
+    onBlur={onBlur}
+    placeholder={placeholder}
+    placeholderTextColor={placeholderTextColor}
+    autoCorrect={autoCorrect}
+    onSubmitEditing={onSubmitEditing}
   />;
 }
 
@@ -51,6 +68,14 @@ const MyTextInput = withValidProps(validatorForStyleNames)(MyTextInputTemp);
 
 MyTextInput.propTypes = {
   styleNames: PropTypes.arrayOf(PropTypes.string),
+  multiline: PropTypes.bool,
+  value: PropTypes.string,
+  onChangeText: PropTypes.func,
+  onBlur: PropTypes.func,
+  placeholder: PropTypes.string,
+  placeholderTextColor: PropTypes.string,
+  autoCorrect: PropTypes.bool,
+  onSubmitEditing: PropTypes.func,
 };
 
 export default MyTextInput;
