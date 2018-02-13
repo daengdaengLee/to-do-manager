@@ -7,7 +7,7 @@ import MyTextInput from '../../atoms/MyTextInput';
 function InputToDo({ newToDo, onChangeText, onSubmitEditing }) {
   return <MyTextInput
     styleNames={['inputNewToDo']}
-    placeholder={'New To DO'}
+    placeholder={'New To Do'}
     placeholderTextColor={'#999999'}
     value={newToDo}
     onChangeText={onChangeText}
