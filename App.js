@@ -2,8 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import uuidv1 from 'uuid/v1';
 
-import InputToDo from './components/molecules/InputToDo';
-import ToDoList from './components/organisms/ToDoList';
+import ToDosCard from './components/organisms/ToDosCard';
 
 export default class App extends React.Component {
 
@@ -36,12 +35,10 @@ export default class App extends React.Component {
     const { toDos, newToDo } = this.state;
     return (
       <View style={styles.container}>
-        <InputToDo
+        <ToDosCard
           newToDo={newToDo}
           onChangeText={_controlNewToDo}
           onSubmitEditing={_addToDo}
-        />
-        <ToDoList
           toDos={toDos}
           toggleComplete={_toggleComplete}
           deleteItem={_deleteItem}
