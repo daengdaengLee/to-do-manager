@@ -10,7 +10,7 @@ import filterStyles from '../../../utils/filterStyles';
 import validateStyleNames from '../../../utils/validateStyleNames';
 
 // define validator function
-const validatorForStyleNames = validateStyleNames(['mainInput', 'itemInput', 'completedText', 'uncompletedText']);
+const validatorForStyleNames = validateStyleNames(['mainInput', 'itemInput', 'completedText', 'uncompletedText', 'inputNewToDo']);
 
 const { width } = Dimensions.get('window');
 
@@ -61,6 +61,12 @@ const styles = StyleSheet.create({
   },
   uncompletedText: {
     color: '#353839',
+  },
+  inputNewToDo: {
+    padding: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: '#BBBBBB',
+    fontSize: 25,
   },
 });
 
