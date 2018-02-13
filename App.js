@@ -23,6 +23,7 @@ export default class App extends React.Component {
     };
     this._toggleComplete = this._toggleComplete.bind(this);
     this._updateToDo = this._updateToDo.bind(this);
+    this._deleteItem = this._deleteItem.bind(this);
   }
 
   render() {
@@ -54,7 +55,11 @@ export default class App extends React.Component {
   }
 
   _deleteItem(id) {
-    alert(`Delete ${id} To Do?`);
+    this.setState(prevState => {
+      const toDos = prevState.toDos;
+      delete toDos[id];
+      return { toDos };
+    });
   }
 
   _updateToDo(id, text) {
