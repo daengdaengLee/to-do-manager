@@ -30,7 +30,7 @@ const MyScrollView = withValidProps(validatorForStyleNames)(MyScrollViewTemp);
 
 MyScrollView.propTypes = {
   styleNames: PropTypes.arrayOf(PropTypes.string),
-  children: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([PropTypes.node, PropTypes.element]).isRequired,
 };
 
 export default MyScrollView;
