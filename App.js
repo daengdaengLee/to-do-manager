@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import ToDoItem from './components/organisms/ToDoItem';
+import ToDoList from './components/organisms/ToDoList';
 
 export default class App extends React.Component {
 
@@ -23,6 +23,7 @@ export default class App extends React.Component {
     };
     this._toggleComplete = this._toggleComplete.bind(this);
     this._updateToDo = this._updateToDo.bind(this);
+    this._deleteItem = this._deleteItem.bind(this);
   }
 
   render() {
@@ -30,13 +31,12 @@ export default class App extends React.Component {
     const { toDos } = this.state;
     return (
       <View style={styles.container}>
-        {Object.values(toDos).reverse().map(toDo => <ToDoItem
-          {...toDo}
+        <ToDoList
+          toDos={toDos}
           toggleComplete={_toggleComplete}
           deleteItem={_deleteItem}
           updateToDo={_updateToDo}
-          key={id}
-        />)}
+        />
       </View>
     );
   }
@@ -55,7 +55,11 @@ export default class App extends React.Component {
   }
 
   _deleteItem(id) {
-    alert(`Delete ${id} To Do?`);
+    this.setState(prevState => {
+      const toDos = prevState.toDos;
+      delete toDos[id];
+      return { toDos };
+    });
   }
 
   _updateToDo(id, text) {

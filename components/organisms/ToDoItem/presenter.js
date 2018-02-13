@@ -21,7 +21,7 @@ function ToDoItemPresenter({
   return (
     <MyView styleNames={['row', 'toDoItemRow']}>
       <MyView styleNames={['toDoItemFirstColumn']}>
-        <CompleteButton isCompleted={isCompleted} eventFunc={() => toggleComplete(id)} />
+        <CompleteButton isCompleted={isCompleted} eventFunc={toggleComplete} />
         <ToDoTextField
           isEditing={isEditing}
           trueProps={{
@@ -39,7 +39,7 @@ function ToDoItemPresenter({
       <ActionButtons
         isEditing={isEditing}
         trueProps={{ finishEditing }}
-        falseProps={{ startEditing, deleteItem: () => deleteItem(id) }}
+        falseProps={{ startEditing, deleteItem }}
       />
     </MyView>
   );
