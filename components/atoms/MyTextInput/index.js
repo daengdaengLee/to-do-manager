@@ -10,16 +10,33 @@ import filterStyles from '../../../utils/filterStyles';
 import validateStyleNames from '../../../utils/validateStyleNames';
 
 // define validator function
-const validatorForStyleNames = validateStyleNames(['mainInput', 'itemInput', 'completedText', 'uncompletedText']);
+const validatorForStyleNames = validateStyleNames(['mainInput', 'itemInput', 'completedText', 'uncompletedText', 'inputNewToDo']);
 
 const { width } = Dimensions.get('window');
 
-function MyTextInputTemp({ styleNames, ...remainProps }) {
+function MyTextInputTemp({
+  styleNames,
+  multiline,
+  value,
+  onChangeText,
+  onBlur,
+  placeholder,
+  placeholderTextColor,
+  autoCorrect,
+  onSubmitEditing,
+}) {
   return <TextInput
     style={filterStyles(styleNames, styles)}
     underlineColorAndroid={'transparent'}
     returnKeyType={'done'}
-    {...remainProps}
+    multiline={multiline}
+    value={value}
+    onChangeText={onChangeText}
+    onBlur={onBlur}
+    placeholder={placeholder}
+    placeholderTextColor={placeholderTextColor}
+    autoCorrect={autoCorrect}
+    onSubmitEditing={onSubmitEditing}
   />;
 }
 
@@ -45,12 +62,26 @@ const styles = StyleSheet.create({
   uncompletedText: {
     color: '#353839',
   },
+  inputNewToDo: {
+    padding: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: '#BBBBBB',
+    fontSize: 25,
+  },
 });
 
 const MyTextInput = withValidProps(validatorForStyleNames)(MyTextInputTemp);
 
 MyTextInput.propTypes = {
   styleNames: PropTypes.arrayOf(PropTypes.string),
+  multiline: PropTypes.bool,
+  value: PropTypes.string,
+  onChangeText: PropTypes.func,
+  onBlur: PropTypes.func,
+  placeholder: PropTypes.string,
+  placeholderTextColor: PropTypes.string,
+  autoCorrect: PropTypes.bool,
+  onSubmitEditing: PropTypes.func,
 };
 
 export default MyTextInput;

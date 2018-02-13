@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import uuidv1 from 'uuid/v1';
 
+import InputToDo from './components/molecules/InputToDo';
 import ToDoList from './components/organisms/ToDoList';
 
 export default class App extends React.Component {
@@ -8,6 +10,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      newToDo: '',
       toDos: {
         testToDo1: {
           id: 'testToDo1',
@@ -24,13 +27,20 @@ export default class App extends React.Component {
     this._toggleComplete = this._toggleComplete.bind(this);
     this._updateToDo = this._updateToDo.bind(this);
     this._deleteItem = this._deleteItem.bind(this);
+    this._controlNewToDo = this._controlNewToDo.bind(this);
+    this._addToDo = this._addToDo.bind(this);
   }
 
   render() {
-    const { _toggleComplete, _deleteItem, _updateToDo } = this;
-    const { toDos } = this.state;
+    const { _toggleComplete, _deleteItem, _updateToDo, _controlNewToDo, _addToDo } = this;
+    const { toDos, newToDo } = this.state;
     return (
       <View style={styles.container}>
+        <InputToDo
+          newToDo={newToDo}
+          onChangeText={_controlNewToDo}
+          onSubmitEditing={_addToDo}
+        />
         <ToDoList
           toDos={toDos}
           toggleComplete={_toggleComplete}
@@ -42,37 +52,64 @@ export default class App extends React.Component {
   }
   
   _toggleComplete(id) {
-    this.setState(prevState => {
-      const toDos = {
-        ...prevState.toDos,
-        [id]: {
-          ...prevState.toDos[id],
-          isCompleted: !prevState.toDos[id].isCompleted,
+    this.setState(prevState => ({
+        toDos: {
+          ...prevState.toDos,
+          [id]: {
+            ...prevState.toDos[id],
+            isCompleted: !prevState.toDos[id].isCompleted,
+          },
         },
-      };
-      return { toDos };
-    });
+      })
+    );
   }
 
   _deleteItem(id) {
     this.setState(prevState => {
-      const toDos = prevState.toDos;
+      const toDos = { ...prevState.toDos };
       delete toDos[id];
       return { toDos };
     });
   }
 
   _updateToDo(id, text) {
-    this.setState(prevState => {
-      const toDos = {
+    this.setState(prevState => ({
+      toDos: {
         ...prevState.toDos,
         [id]: {
           ...prevState.toDos[id],
           text,
         },
-      };
-      return { toDos };
+      },
+    }));
+  }
+
+  _controlNewToDo(text) {
+    this.setState({
+      newToDo: text,
     });
+  }
+
+  _addToDo() {
+    const { newToDo } = this.state;
+    if(newToDo !== '') {
+      this.setState(prevState => {
+        const ID = uuidv1();
+        return {
+          ...prevState,
+          newToDo: '',
+          toDos: {
+            ...prevState.toDos,
+            [ID]: {
+              id: ID,
+              isCompleted: false,
+              text: newToDo,
+              createdAt: Date.now(),
+            },
+          },
+        };
+      });
+    }
   }
 
 }
