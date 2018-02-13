@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import ToDoItem from './components/organisms/ToDoItem';
+import ToDoList from './components/organisms/ToDoList';
 
 export default class App extends React.Component {
 
@@ -30,13 +30,12 @@ export default class App extends React.Component {
     const { toDos } = this.state;
     return (
       <View style={styles.container}>
-        {Object.values(toDos).reverse().map(toDo => <ToDoItem
-          {...toDo}
+        <ToDoList
+          toDos={toDos}
           toggleComplete={_toggleComplete}
           deleteItem={_deleteItem}
           updateToDo={_updateToDo}
-          key={id}
-        />)}
+        />
       </View>
     );
   }
