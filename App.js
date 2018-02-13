@@ -7,54 +7,68 @@ export default class App extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { isEditing: false, isCompleted: false, toDoItem: 'to do item', id: '123456789' };
-    this._finishEditing = this._finishEditing.bind(this);
-    this._startEditing = this._startEditing.bind(this);
+    this.state = {
+      toDos: {
+        testToDo1: {
+          id: 'testToDo1',
+          text: 'this is an example to-do-item 1.',
+          isCompleted: false,
+        },
+        testToDo2: {
+          id: 'testToDo2',
+          text: 'this is an example to-do-item 2',
+          isCompleted: false,
+        }
+      },
+    };
     this._toggleComplete = this._toggleComplete.bind(this);
-    this._controlInput = this._controlInput.bind(this);
-    this._deleteItem = this._deleteItem.bind(this);
-  }
-
-  _finishEditing() {
-    this.setState({ isEditing: false });
-  }
-
-  _startEditing() {
-    this.setState({ isEditing: true });
-  }
-
-  _deleteItem() {
-    this.setState({ toDoItem: 'deleted!' })
-  }
-
-  _toggleComplete() {
-    this.setState((prevState) => ({ isCompleted: !prevState.isCompleted }));
-  }
-
-  _controlInput(text) {
-    this.setState({
-      toDoItem: text,
-    })
+    this._updateToDo = this._updateToDo.bind(this);
   }
 
   render() {
-    const { isEditing, isCompleted, toDoItem, id } = this.state;
-    const { _finishEditing, _startEditing, _deleteItem, _toggleComplete, _controlInput } = this;
+    const { _toggleComplete, _deleteItem, _updateToDo } = this;
+    const { toDos } = this.state;
     return (
       <View style={styles.container}>
-        <ToDoItem
-          id={id}
-          isCompleted={isCompleted}
+        {Object.values(toDos).reverse().map(toDo => <ToDoItem
+          {...toDo}
           toggleComplete={_toggleComplete}
-          isEditing={isEditing}
-          toDoItem={toDoItem}
-          controlInput={_controlInput}
-          finishEditing={_finishEditing}
-          startEditing={_startEditing}
           deleteItem={_deleteItem}
-        />
+          updateToDo={_updateToDo}
+          key={id}
+        />)}
       </View>
     );
+  }
+  
+  _toggleComplete(id) {
+    this.setState(prevState => {
+      const toDos = {
+        ...prevState.toDos,
+        [id]: {
+          ...prevState.toDos[id],
+          isCompleted: !prevState.toDos[id].isCompleted,
+        },
+      };
+      return { toDos };
+    });
+  }
+
+  _deleteItem(id) {
+    alert(`Delete ${id} To Do?`);
+  }
+
+  _updateToDo(id, text) {
+    this.setState(prevState => {
+      const toDos = {
+        ...prevState.toDos,
+        [id]: {
+          ...prevState.toDos[id],
+          text,
+        },
+      };
+      return { toDos };
+    });
   }
 
 }
