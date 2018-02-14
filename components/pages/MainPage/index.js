@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { AsyncStorage } from 'react-native';
 import uuidv1 from 'uuid/v1';
 
 // import Components
