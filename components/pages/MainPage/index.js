@@ -12,6 +12,7 @@ class MainPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLoading: true,
       newToDo: '',
       toDos: {
         testToDo1: {
@@ -26,6 +27,7 @@ class MainPage extends Component {
         }
       },
     };
+    this._loadToDos = this._loadToDos.bind(this);
     this._toggleComplete = this._toggleComplete.bind(this);
     this._updateToDo = this._updateToDo.bind(this);
     this._deleteItem = this._deleteItem.bind(this);
@@ -35,9 +37,9 @@ class MainPage extends Component {
 
   render() {
     const { _toggleComplete, _deleteItem, _updateToDo, _controlNewToDo, _addToDo } = this;
-    const { toDos, newToDo } = this.state;
+    const { toDos, newToDo, isLoading } = this.state;
     return <MainTemplate
-      isLoading={false}
+      isLoading={isLoading}
       mainTitle={<MainTitle />}
       mainContent={<ToDosCard
         newToDo={newToDo}
@@ -49,6 +51,20 @@ class MainPage extends Component {
         updateToDo={_updateToDo}
       />}
     />;
+  }
+
+  componentDidMount() {
+    this._loadToDos();
+  }
+
+  async _loadToDos() {
+    try {
+      const toDos = await AsyncStorage.getItem('toDos');
+      const parsedToDos = JSON.parse(toDos);
+      this.setState({ isLoading: false, toDos: parsedToDos || {} });
+    } catch(err) {
+      console.log(err);
+    }
   }
 
   _toggleComplete(id) {
