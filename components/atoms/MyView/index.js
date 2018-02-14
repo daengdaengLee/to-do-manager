@@ -10,7 +10,7 @@ import filterStyles from '../../../utils/filterStyles';
 import validateStyleNames from '../../../utils/validateStyleNames';
 
 // define validator function
-const validatorForStyleNames = validateStyleNames(['circle', 'completedCircle', 'uncompletedCircle', 'iconContainer', 'row', 'toDoItemRow', 'toDoItemFirstColumn', 'toDosCard']);
+const validatorForStyleNames = validateStyleNames(['circle', 'completedCircle', 'uncompletedCircle', 'iconContainer', 'row', 'toDoItemRow', 'toDoItemFirstColumn', 'toDosCard', 'toDoAppContainer']);
 
 const { width } = Dimensions.get('window');
 
@@ -77,6 +77,11 @@ const styles = StyleSheet.create({
         elevation: 3,
       },
     }),
+  },
+  toDoAppContainer: {
+    flex: 1,
+    backgroundColor: '#F23657',
+    alignItems: 'center',
   },
 });
 
