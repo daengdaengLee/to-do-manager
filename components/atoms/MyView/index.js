@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     borderColor: '#BBBBBB',
   },
   uncompletedCircle: {
-    borderColor: '#F23657',
+    borderColor: '#4DABF7',
   },
   iconContainer: {
     paddingVertical: 10,
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
   },
   toDoAppContainer: {
     flex: 1,
-    backgroundColor: '#F23657',
+    backgroundColor: '#4DABF7',
     alignItems: 'center',
   },
 });
