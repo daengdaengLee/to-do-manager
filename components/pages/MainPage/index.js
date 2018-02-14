@@ -73,7 +73,7 @@ class MainPage extends Component {
           isCompleted: !prevState.toDos[id].isCompleted,
         },
       };
-      this.saveToDos(toDos);
+      this._saveToDos(toDos);
       return { toDos };
     });
   }
