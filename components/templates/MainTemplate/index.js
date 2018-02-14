@@ -6,20 +6,20 @@ import MyView from '../../atoms/MyView';
 import MyStatusBar from '../../atoms/MyStatusBar';
 import MyAppLoading from '../../atoms/MyAppLoading';
 
-function MainTemplate({ MainTitle, MainContent, isLoading }) {
+function MainTemplate({ mainTitle, mainContent, isLoading }) {
   if(isLoading) return <MyAppLoading />;
   return (
     <MyView styleNames={['toDoAppContainer']}>
       <MyStatusBar />
-      <MainTitle />
-      <MainContent />
+      {mainTitle}
+      {mainContent}
     </MyView>
   );
 }
 
 MainTemplate.propTypes = {
-  MainTemplate: PropTypes.oneOfType([PropTypes.node, PropTypes.element]).isRequired,
-  MainContent: PropTypes.oneOfType([PropTypes.node, PropTypes.element]).isRequired,
+  mainTitle: PropTypes.oneOfType([PropTypes.node, PropTypes.element]).isRequired,
+  mainContent: PropTypes.oneOfType([PropTypes.node, PropTypes.element]).isRequired,
   isLoading: PropTypes.bool.isRequired,
 };
 

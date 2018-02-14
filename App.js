@@ -1,10 +1,12 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet } from 'react-native';
 import uuidv1 from 'uuid/v1';
 
+import MainTemplate from './components/templates/MainTemplate';
 import ToDosCard from './components/organisms/ToDosCard';
+import MyText from './components/atoms/MyText';
 
-export default class App extends React.Component {
+class App extends Component {
 
   constructor(props) {
     super(props);
@@ -34,17 +36,19 @@ export default class App extends React.Component {
     const { _toggleComplete, _deleteItem, _updateToDo, _controlNewToDo, _addToDo } = this;
     const { toDos, newToDo } = this.state;
     return (
-      <View style={styles.container}>
-        <ToDosCard
+      <MainTemplate
+        isLoading={false}
+        mainTitle={<MyText>This is main title.</MyText>}
+        mainContent={<ToDosCard
           newToDo={newToDo}
+          toDos={toDos}
           onChangeText={_controlNewToDo}
           onSubmitEditing={_addToDo}
-          toDos={toDos}
           toggleComplete={_toggleComplete}
           deleteItem={_deleteItem}
           updateToDo={_updateToDo}
-        />
-      </View>
+        />}
+      />
     );
   }
   
@@ -111,10 +115,4 @@ export default class App extends React.Component {
 
 }
 
-const styles = StyleSheet.create({
-  container: {
-    marginTop: 40,
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-});
+export default App;
