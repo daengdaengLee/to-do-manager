@@ -10,7 +10,12 @@ import filterStyles from '../../../utils/filterStyles';
 import validateStyleNames from '../../../utils/validateStyleNames';
 
 // define validator function
-const validatorForStyleNames = validateStyleNames(['toDoItemText', 'completedText', 'uncompletedText']);
+const validatorForStyleNames = validateStyleNames([
+  'toDoItemText',
+  'completedText',
+  'uncompletedText',
+  'mainTitle',
+]);
 
 function MyTextTemp({ styleNames, children }) {
   return (
@@ -32,6 +37,13 @@ const styles = StyleSheet.create({
   },
   uncompletedText: {
     color: '#353839',
+  },
+  mainTitle: {
+    color: '#FFFFFF', // white
+    fontSize: 30,
+    marginTop: 50,
+    marginBottom: 30,
+    fontWeight: '200',
   },
 });
 
