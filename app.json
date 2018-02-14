@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "to-do-manager",
-    "description": "This project is really great.",
+    "name": "To Do Manager",
+    "description": "To Do Manager App made with React Native",
     "slug": "to-do-manager",
     "privacy": "public",
     "sdkVersion": "25.0.0",
@@ -10,6 +10,9 @@
     "orientation": "portrait",
     "ios": {
       "supportsTablet": true
+    },
+    "android": {
+      "package": "io.github.daengdaenglee.toyproject.todomanager"
     }
   }
 }
